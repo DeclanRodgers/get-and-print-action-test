@@ -1,15 +1,14 @@
 on: push
-
 jobs:
   api-call-job:
     name: API Call via action
     runs-on: ubuntu-latest
     steps:
-      - name: Install Core dependencies
-        run: npm install @actions/core
+      #- name: Install Core dependencies
+      #  run: npm install @actions/core
         
-      - name: Install Action dependencies
-        run: npm install @actions/github 
+      #- name: Install Action dependencies
+      #  run: npm install @actions/github 
         
       - name: Call API
         id: apiCall
