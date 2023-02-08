@@ -5,10 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Runner dependencies
-        run: npm install @actions/core
-        
-      #- name: Install Action dependencies
-      #  run: npm install @actions/github 
+        run: npm install 
         
       - name: Call API
         id: apiCall
