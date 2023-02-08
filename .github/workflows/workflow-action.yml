@@ -1,0 +1,12 @@
+on: push
+
+jobs:
+  api-call-job:
+    name: API Call via action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API
+        id: apiCall
+        uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
+        with:
+            api-endpoint-url: 'https://www.boredapi.com/api/activity'
