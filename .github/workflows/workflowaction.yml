@@ -11,4 +11,4 @@ jobs:
         id: apiCall
         uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
         with:
-            api-endpoint-url: 'https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random'
+            api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
