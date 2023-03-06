@@ -2,7 +2,7 @@ on: push
 jobs:
   api-call-job:
     name: API Call via action
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
      # - name: Install Runner dependencies
      #   run: npm install 
