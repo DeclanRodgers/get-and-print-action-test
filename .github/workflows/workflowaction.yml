@@ -11,12 +11,14 @@ jobs:
      # - name: Install Runner dependencies
      #   run: npm install 
       - name: Checkout branch
+        id: checkout_repo
         uses: actions/checkout@v2
         with:
           ref: testing
      
      
       - name: List Repo Contents
+        id: get_repo_contents
         run: |
             ls .
         
