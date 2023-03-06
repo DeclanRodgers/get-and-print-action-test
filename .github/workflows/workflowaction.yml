@@ -19,8 +19,20 @@ jobs:
       - name: List Repo Contents
         run: ls .
         
+      - name: get specified property
+          id: repository_type
+          uses: zoexx/github-action-json-file-properties@release
+          with:
+            file_path: "destination.json"
+            prop_path: "endpoint"
+
+        - run: |
+            echo ${{steps.repository_type.outputs.value}}
+        
       - name: Call API
         id: apiCall
         uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
         with:
-            api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+            #api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+            api-endpoint-url: ${{steps.repository_type.outputs.value}}
+
