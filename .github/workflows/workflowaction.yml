@@ -1,4 +1,7 @@
-on: push
+on: 
+    push:
+        branches:
+        - testing
 jobs:
   api-call-job:
     name: API Call via action
@@ -6,9 +9,14 @@ jobs:
     steps:
      # - name: Install Runner dependencies
      #   run: npm install 
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          ref: testing
+     
      
       - name: List Repo Contents
-        run: ls -R
+        run: ls .
         
       - name: Call API
         id: apiCall
