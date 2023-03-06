@@ -6,6 +6,9 @@ jobs:
     steps:
      # - name: Install Runner dependencies
      #   run: npm install 
+     
+      - name: List Repo Contents
+        run: ls -R
         
       - name: Call API
         id: apiCall
