@@ -2,7 +2,7 @@ on:
     push:
         paths: 
             - 'destination.json'
-        branch: testing
+        branch: main
 jobs:
   api-call-job:
     name: API Call via action
@@ -14,7 +14,7 @@ jobs:
         id: checkout_repo
         uses: actions/checkout@v2
         with:
-          ref: testing
+          ref: main
      
       - name: List Repo Contents
         id: get_repo_contents
