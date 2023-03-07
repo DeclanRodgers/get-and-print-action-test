@@ -11,9 +11,6 @@ jobs:
   api-call-job:
     name: API Call via action
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        endpoints: ${{steps.repository_type.outputs.value}}
     steps:
       - name: Checkout branch
         id: checkout_repo
@@ -41,4 +38,4 @@ jobs:
         uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
         with:
             #api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-            api-endpoint-url: ${{ matrix.endpoints }}
+            api-endpoint-url: ${{steps.repository_type.outputs.value}}
