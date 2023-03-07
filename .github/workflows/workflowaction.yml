@@ -1,9 +1,8 @@
 on: 
     push:
-        branch:
+        paths: 'destination.json'
+        branches:
             - main
-        paths: 
-            - 'destination.json'
         
 jobs:
   api-call-job:
@@ -33,7 +32,6 @@ jobs:
       - run: |
             echo ${{steps.repository_type.outputs.value}}
        
-        
       - name: Call API
         id: apiCall
         uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
