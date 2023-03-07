@@ -1,6 +1,10 @@
-on: 
-    push:
-        paths: 'destination.json'
+name: Test Workflow File
+
+on:
+  push:
+    branches:
+      - main
+    paths: 'destination.json'
         
 jobs:
   api-call-job:
@@ -36,4 +40,3 @@ jobs:
         with:
             #api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
             api-endpoint-url: ${{steps.repository_type.outputs.value}}
-
