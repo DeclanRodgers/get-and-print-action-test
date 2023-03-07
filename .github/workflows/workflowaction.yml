@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths: 
-      - 'destination.json'
+    #paths: 
+    #  - 'destination.json'
         
 jobs:
   api-call-job:
