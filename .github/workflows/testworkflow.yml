@@ -2,8 +2,7 @@ on:
     push:
         paths: 
             - 'destination.json'
-        branches:
-            - main
+        branches: [ "master", "main" ] 
 jobs:
   api-call-job:
     name: API Call via action
