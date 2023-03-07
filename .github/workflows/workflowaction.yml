@@ -12,8 +12,6 @@ jobs:
     name: API Call via action
     runs-on: ubuntu-latest
     steps:
-     # - name: Install Runner dependencies
-     #   run: npm install 
       - name: Checkout branch
         id: checkout_repo
         uses: actions/checkout@v2
