@@ -3,8 +3,9 @@ name: Test Workflow File
 on: 
   push:
     branches:
-      - main
-    paths: 'destination.json'
+      - 'main'
+    paths: 
+      - 'destination.json'
         
 jobs:
   api-call-job:
