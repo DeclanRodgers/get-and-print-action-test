@@ -3,7 +3,7 @@ name: Test Workflow File
 on: 
   push:
     branches:
-      - testing
+      - main
     paths: 
       - 'destination.json'
         
