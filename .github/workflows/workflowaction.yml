@@ -1,8 +1,9 @@
 on: 
     push:
+        branch: main
         paths: 
             - 'destination.json'
-        branch: main
+        
 jobs:
   api-call-job:
     name: API Call via action
