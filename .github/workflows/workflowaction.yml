@@ -1,7 +1,9 @@
 name: Test Workflow File
 
-on:
+on: 
   push:
+    branches:
+      - main
     paths: 'destination.json'
         
 jobs:
