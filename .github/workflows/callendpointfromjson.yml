@@ -1,0 +1,43 @@
+on: 
+    push:
+        branches:
+            - main
+        paths: 
+            - 'destination.json'
+        
+jobs:
+  api-call-job:
+    name: API Call via action
+    runs-on: ubuntu-latest
+    steps:
+     # - name: Install Runner dependencies
+     #   run: npm install 
+      - name: Checkout branch
+        id: checkout_repo
+        uses: actions/checkout@v2
+        with:
+          ref: main
+     
+      - name: List Repo Contents
+        id: get_repo_contents
+        run: |
+            ls .
+        
+      - name: Get JSON Data
+        id: repository_type
+        uses: zoexx/github-action-json-file-properties@release
+        with:
+          file_path: "destination.json"
+          prop_path: "endpoint"
+
+      - run: |
+            echo ${{steps.repository_type.outputs.value}}
+       
+        
+      - name: Call API
+        id: apiCall
+        uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
+        with:
+            #api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+            api-endpoint-url: ${{steps.repository_type.outputs.value}}
+
