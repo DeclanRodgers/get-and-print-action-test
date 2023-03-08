@@ -1,6 +1,6 @@
 {
-	"endpoint": {
+	"endpoint": [
 		"https://meowfacts.herokuapp.com/?count=1",
 		"https://itsthisforthat.com/api.php?json"
-	}
+	]
 }
