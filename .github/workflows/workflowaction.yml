@@ -4,16 +4,11 @@ on:
   push:
     branches:
       - main
-    #paths: 
-    #  - 'destination.json'
         
 jobs:
-  api-call-job:
+  job1:
     name: API Call via action
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        endpoints: ${{steps.repository_type.outputs.value}}
     steps:
       - name: Checkout branch
         id: checkout_repo
@@ -33,12 +28,20 @@ jobs:
           file_path: "destination.json"
           prop_path: "endpoint"
 
-      - run: |
+      - name: Display Endpoint to Call
+        run: |
             echo ${{steps.repository_type.outputs.value}}
-       
-      - name: Call API
-        id: apiCall
-        uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
-        with:
-            #api-endpoint-url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-            api-endpoint-url: ${{ matrix.endpoints }}
+
+  job2:
+    name: Call Endpoint(s)
+    runs-on: ubuntu-latest 
+    strategy:
+      matrix:
+        endpoints: ${{job1.steps.repository_type.outputs.value}}
+
+    steps:
+    - name: Call API
+      id: apiCall
+      uses: 'DeclanRodgers/get-and-print-github-action@v1.1'
+      with:
+        api-endpoint-url: ${{ matrix.endpoints }}
