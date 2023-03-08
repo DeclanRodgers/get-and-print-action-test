@@ -10,7 +10,7 @@ jobs:
     name: API Call via action
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{steps.repository_type.outputs.value}}
+       matrix: ${{steps.set-matrix.outputs.matrix}}
     steps:
       - name: Checkout branch
         id: checkout_repo
@@ -23,12 +23,15 @@ jobs:
         run: |
             ls .
         
-      - name: Get JSON Data
-        id: repository_type
-        uses: zoexx/github-action-json-file-properties@release
-        with:
-          file_path: "destination.json"
-          prop_path: "endpoint"
+      # - name: Get JSON Data
+      #   id: repository_type
+      #   uses: zoexx/github-action-json-file-properties@release
+      #   with:
+      #     file_path: "destination.json"
+      #     prop_path: "endpoint"
+
+      - id: set-matrix
+        run: echo "::set-output name=matrix::$(ls ./*.json | jq -R -s -c 'split("\n")[:-1]')"
 
       - name: Display Endpoint to Call
         run: |
