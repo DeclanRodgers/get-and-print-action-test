@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest 
     strategy:
       matrix:
-        endpoints: ${{fromJson(needs.job1.outputs.matrix)}}
+        endpoints: ${{job1.outputs.matrix}}
 
     steps:
     - name: Call API
