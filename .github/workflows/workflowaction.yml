@@ -9,6 +9,8 @@ jobs:
   job1:
     name: API Call via action
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{steps.repository_type.outputs.value}}
     steps:
       - name: Checkout branch
         id: checkout_repo
@@ -37,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest 
     strategy:
       matrix:
-        endpoints: ${{job1.steps.repository_type.outputs.value}}
+        endpoints: ${{fromJson(needs.job1.outputs.matrix)}}
 
     steps:
     - name: Call API
